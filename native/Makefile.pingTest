@@ -1,0 +1,19 @@
+CC = g++
+CFLAGS = -std=c++11
+
+TARGET = pingTest
+SOURCES = ping.cpp pingTest.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $(TARGET)
+
+.cpp.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(TARGET) $(OBJECTS)
+
+.PHONY: all clean
